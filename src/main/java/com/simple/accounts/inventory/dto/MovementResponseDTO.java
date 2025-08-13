@@ -10,4 +10,7 @@ public class MovementResponseDTO {
     private String productName;
     private BigDecimal quantity;
     private LocalDateTime timestamp;
+
+    private String batchNumber;
+    private LocalDateTime expiryDate;
 }

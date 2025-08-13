@@ -16,6 +16,15 @@ import java.util.List;
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
+    @GetMapping("/barcode/{barcode}")
+    public ResponseEntity<ProductResponseDTO> getProductByBarcode(@PathVariable String barcode) {
+        return ResponseEntity.ok(productService.getProductByBarcode(barcode));
+    }
+
+    @GetMapping("/sku/{sku}")
+    public ResponseEntity<ProductResponseDTO> getProductBySku(@PathVariable String sku) {
+        return ResponseEntity.ok(productService.getProductBySku(sku));
+    }
     private final ProductService productService;
 
     @PostMapping

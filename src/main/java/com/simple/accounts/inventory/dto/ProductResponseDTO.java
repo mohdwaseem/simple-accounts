@@ -11,4 +11,11 @@ public class ProductResponseDTO {
     public String name;
     public List<PriceResponseDTO> prices;
     public BigDecimal currentStock;
+
+    public String barcode;
+    public String sku;
+
+    public UnitOfMeasureDTO unitOfMeasure;
+    public ProductCategoryDTO category;
+    public BrandDTO brand;
 }

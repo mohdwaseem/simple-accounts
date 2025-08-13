@@ -15,6 +15,13 @@ public interface StockMovementRepository extends JpaRepository<StockMovement, Lo
 
     List<StockMovement> findByProductIdAndType(Long productId, String type);
 
+    List<StockMovement> findByBatchNumber(String batchNumber);
+
+    List<StockMovement> findByExpiryDateBefore(java.time.LocalDateTime before);
+
     @Query("SELECT COALESCE(SUM(m.quantity), 0) FROM StockMovement m WHERE m.product.id = :productId")
     BigDecimal calculateStockLevel(@Param("productId") Long productId);
+
+    @Query("SELECT COALESCE(SUM(m.quantity), 0) FROM StockMovement m WHERE m.product.id = :productId AND m.warehouse.id = :warehouseId")
+    BigDecimal calculateStockLevelByWarehouse(@Param("productId") Long productId, @Param("warehouseId") Long warehouseId);
 }
